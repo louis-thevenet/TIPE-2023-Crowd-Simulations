@@ -1,0 +1,147 @@
+% Le titre de la partie
+\section{Construction du modèle}
+
+
+%%%%%%%%%%%%%%%%%%
+% Plan
+%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Modélisation}
+\framesubtitle{Plan}
+    \textbf{Modélisation}
+    \begin{itemize}
+        \item <2-> Modèle mathématique simple
+        \item <3-> Adaptation informatique
+        \item <4-> Amélioration du modèle
+    \end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Première diapo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Modèle mathématique}
+\framesubtitle{Simplifications}
+
+On restreint l’étude à deux dimensions, en \textbf{discrétisant} le temps et le plan :
+\bigskip
+
+
+\begin{itemize}
+    \item <2-> Carte $\leftrightarrow P_{i,j} \in M_{n,p}(\mathbb{N}), (n, p) \in \mathbb{N}^2$
+    \item <3->  Agent $ \leftrightarrow position, but \in \llbracket 1, n\rrbracket \times \llbracket 1, p\rrbracket $
+\end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Deuxième diapo: le code informatique impose un 
+% environnement "fragile" pour la frame
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Modèle mathématique}
+\framesubtitle{Implémentation des structures}
+
+\begin{code}
+\begin{minted}[linenos]{c}
+struct location {
+  int y;
+  int x;
+}
+
+struct person {
+  struct location pos;
+  struct location goal;
+}
+\end{minted}
+\end{code}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% troisième diapo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Modèle mathématique}
+\framesubtitle{Implémentation des structures}
+
+
+\begin{code}
+\begin{minted}[linenos]{c}
+struct map {
+int **level;      // plan de la simulation
+int start_nb;     // nombre d'entrées
+location *starts; // et leurs positions
+int exit_nb;      // nombre de sorties
+location *exits;  // et leurs positions
+int width;        // largeur
+int height;       // hauteur
+}
+\end{minted}
+\end{code}
+
+\[ map \rightarrow level[i][j] \leftrightarrow \text{ nombre de personnes à la position } (i,j)\]
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% quatrième diapo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Modèle mathématique}
+\framesubtitle{Squelette du programme}
+
+On définit des fonctions :\\
+\begin{itemize}
+    \item Simulation
+        \begin{itemize}
+            \item <2-> $charger\_carte$
+            \item <3-> $intention$
+            \item <4-> $deplacement$
+        \end{itemize}
+
+\bigskip
+    \item <5-> Génération des résultats
+        \begin{itemize}
+            \item <6-> $creer\_image$
+            \item <7-> $sauvegarder\_image$
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% cinquième diapo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+\frametitle{Modèle mathématique}
+\framesubtitle{Précisions}
+
+Notant \(\mathbb{A}\) l'ensemble des agents de la simulation, $intention$ et $deplacement$ se définissent par :
+
+
+
+\begin{empheq}[left=intention \colon \empheqlbrace]{align*}
+    \mathbb{A} \to& \mathbb{N}^2\\
+    x \mapsto& intention(x)
+\end{empheq}
+
+\begin{empheq}[left=deplacement \colon \empheqlbrace]{align*}
+    M_{n,p}(\mathbb{N}) \times \mathbb{A} \to& M_{n,p}(\mathbb{N})\\
+    (M, x) \mapsto& deplacement(M, x)
+\end{empheq}
+
+\end{frame}
+

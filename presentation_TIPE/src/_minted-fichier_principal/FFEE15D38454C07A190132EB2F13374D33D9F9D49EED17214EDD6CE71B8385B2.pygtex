@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{struct}\PYG{+w}{ }\PYG{n+nc}{map}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{o}{**}\PYG{n}{level}\PYG{p}{;}\PYG{+w}{      }\PYG{c+c1}{// plan de la simulation}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{start\PYGZus{}nb}\PYG{p}{;}\PYG{+w}{     }\PYG{c+c1}{// nombre d\PYGZsq{}entrées}
+\PYG{n}{location}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{starts}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// et leurs positions}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{exit\PYGZus{}nb}\PYG{p}{;}\PYG{+w}{      }\PYG{c+c1}{// nombre de sorties}
+\PYG{n}{location}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{exits}\PYG{p}{;}\PYG{+w}{  }\PYG{c+c1}{// et leurs positions}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{width}\PYG{p}{;}\PYG{+w}{        }\PYG{c+c1}{// largeur}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{height}\PYG{p}{;}\PYG{+w}{       }\PYG{c+c1}{// hauteur}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

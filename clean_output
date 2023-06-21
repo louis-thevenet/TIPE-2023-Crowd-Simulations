@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rm ./ppms/foule-*.ppm
+rm ./output.mp4
