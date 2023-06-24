@@ -13,7 +13,7 @@ where `N` is the number of initial agents.
 ## Example
 `./runmp4 maps/simple_porte_test_obstacle.txt 100` \
 
-Each number represents the number of agents on the square, a red segment points toward their desired exit.
+Each digit represents the number of agents on the square, a red segment points toward their desired exit.
 
 https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/assets/55986107/b6d90139-a3bf-4aae-b1cc-28a77aa769b3
 
