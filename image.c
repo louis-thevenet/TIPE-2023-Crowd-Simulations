@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 
 #define SCALE 40
 
@@ -201,6 +202,7 @@ void save_image(int n, int **img, int width, int height) {
             "000 255 000 \0", // sortie
 
     };
+    mkdir("./ppms", 0777);
     sprintf(filename, "ppms/foule-%03d.ppm", n);
     file = fopen(filename, "w");
     fprintf(file, "P3\n%d %d\n255\n", width, height);

@@ -53,3 +53,8 @@ sysinfo.txt
 
 cmake-build-debug/
 cmake-build-trace/
+
+*.out
+*.ppm
+*.mp4
+ppms/
