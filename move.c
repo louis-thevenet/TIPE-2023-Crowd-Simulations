@@ -109,7 +109,7 @@ int a_star(map *m, location start, location goal) {
     return -1;
 }
 
-void move_basique(map *m, person *p, int next) {
+void move_basic(map *m, person *p, int next) {
     if (next == -1) return;
     int y = line_to_grid_y(next, m->width);
     int x = line_to_grid_x(next, m->width);

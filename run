@@ -4,9 +4,9 @@ filename=$1
 f=$2
 
 ./clean_output
-./a.out "$filename"
+./crowdsim "$filename"
 echo "converting to mp4"
-convert -delay $f -loop 0 ./ppms/foule-*.ppm  output.mp4
+convert -delay $f -loop 0 ./ppms/step-*.ppm  output.mp4
 vlc ./output.mp4
 
 

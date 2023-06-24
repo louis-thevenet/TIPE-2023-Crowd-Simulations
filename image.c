@@ -203,7 +203,7 @@ void save_image(int n, int **img, int width, int height) {
 
     };
     mkdir("./ppms", 0777);
-    sprintf(filename, "ppms/foule-%03d.ppm", n);
+    sprintf(filename, "ppms/step-%03d.ppm", n);
     file = fopen(filename, "w");
     fprintf(file, "P3\n%d %d\n255\n", width, height);
     for (int j = 0; j < height; j++) {

@@ -16,7 +16,7 @@ int heur_eucl_pop(int y, int x, location goal, map *m);
 int a_star(map *m, location start, location goal);
 
 
-void move_basique(map *m, person *p, int next);
+void move_basic(map *m, person *p, int next);
 void move_stress(map *m, person **p, int pop, int *pred, int p0);
 
 

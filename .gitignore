@@ -12,7 +12,7 @@ Assets/Plugins/Editor/JetBrains*
 cmake-build-debug/
 cmake-build-trace/
 
-*.out
+crowdsim
 *.ppm
 *.mp4
 ppms/
