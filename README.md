@@ -5,6 +5,9 @@ See (french) :
 - [MCOT](https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/blob/main/presentation_TIPE/Mcot_louis.pdf)
 - [Presentation](https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/blob/main/presentation_TIPE/fichier_principal.pdf)
 ## Usage
+### Compile
+`gcc -o crowdsim -lm ./*.c`
+### Run
 - `runmp4 maps/your_map N`
 - `rungif maps/your_map N`
 
