@@ -1,12 +1,11 @@
 #include "image.h"
-#define POP 60
 
-void simulation(char *map_name) {
+void simulation(char *map_name, int initial_pop) {
   map *m = load_map(map_name);
-  person **p = generate_population(m, POP);
-  int *pred = malloc(sizeof(int) * POP);
-  int pop = POP;
-  int cnt = POP;
+  person **p = generate_population(m, initial_pop);
+  int *pred = malloc(sizeof(int) * initial_pop);
+  int pop = initial_pop;
+  int cnt = initial_pop;
   int j = 0;
   double aver_dens = 0;
 
@@ -31,13 +30,16 @@ void simulation(char *map_name) {
   }
 
   printf("average density : %f\n", aver_dens / (double)j);
-  free_population(p, POP);
+  free_population(p, initial_pop);
   free(pred);
   free_map(m);
 }
 
 int main(int argc, char **argv) {
-  if (argc <= 1) return 1;
-    simulation(argv[1]);
+  if (argc <= 2 || atoi(argv[2])==0) {
+    printf("Missing parameters");
+    return 1;
+  }
+    simulation(argv[1], atoi(argv[2]));
   return 0;
 }
