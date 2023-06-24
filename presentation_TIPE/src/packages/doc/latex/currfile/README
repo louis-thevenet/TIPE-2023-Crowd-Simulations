@@ -1,9 +1,0 @@
-LaTeX package 'currfile'
-~~~~~~~~~~~~~~~~~~~~~~~~
-Copyright (c) 2010-2022 by Martin Scharrer <martin.scharrer@web.de>
-Repository: https://github.com/MartinScharrer/currfile
-Issues: https://github.com/MartinScharrer/currfile/issues
-
-Provides macros holding the file name information (dir, base name, extension, full name and full path) for
-files read by LaTeX's \input and \include macros.
-

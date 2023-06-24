@@ -1,4 +1,0 @@
-\frametitle{main.c}
-\frametitle{main.c}
-    \scriptsize
-    \inputminted[breaklines,breakanywhere]{c}{../../main.c}

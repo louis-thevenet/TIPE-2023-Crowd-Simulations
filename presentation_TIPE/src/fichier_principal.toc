@@ -1,7 +1,0 @@
-\babel@toc {french}{}\relax 
-\beamer@sectionintoc {1}{Introduction Historique}{3}{0}{1}
-\beamer@sectionintoc {2}{Problématisation}{14}{0}{2}
-\beamer@sectionintoc {3}{Construction du modèle}{17}{0}{3}
-\beamer@sectionintoc {4}{Implémentation du modèle}{34}{0}{4}
-\beamer@sectionintoc {5}{Applications du modèle}{77}{0}{5}
-\beamer@sectionintoc {6}{Annexe}{108}{0}{6}
