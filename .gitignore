@@ -15,4 +15,5 @@ cmake-build-trace/
 crowdsim
 *.ppm
 *.mp4
+*.gif
 ppms/
