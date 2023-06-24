@@ -110,7 +110,7 @@
 \PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 
-\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{move\PYGZus{}basique}\PYG{p}{(}\PYG{n}{map}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{m}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{person}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{p}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{next}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{move\PYGZus{}basic}\PYG{p}{(}\PYG{n}{map}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{m}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{person}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{p}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{next}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{next}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{return}\PYG{p}{;}
 \PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{y}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{line\PYGZus{}to\PYGZus{}grid\PYGZus{}y}\PYG{p}{(}\PYG{n}{next}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{m}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{width}\PYG{p}{);}
 \PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{x}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{line\PYGZus{}to\PYGZus{}grid\PYGZus{}x}\PYG{p}{(}\PYG{n}{next}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{m}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{width}\PYG{p}{);}

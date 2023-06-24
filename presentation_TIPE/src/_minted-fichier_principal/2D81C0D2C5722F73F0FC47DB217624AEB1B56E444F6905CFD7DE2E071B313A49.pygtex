@@ -3,6 +3,7 @@
 \PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}math.h\PYGZgt{}}
 \PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}stdio.h\PYGZgt{}}
 \PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}stdlib.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include}\PYG{+w}{ }\PYG{c+cpf}{\PYGZlt{}sys/stat.h\PYGZgt{}}
 
 \PYG{c+cp}{\PYGZsh{}define SCALE 40}
 
@@ -202,7 +203,8 @@
 \PYG{+w}{            }\PYG{l+s}{\PYGZdq{}000 255 000 }\PYG{l+s+se}{\PYGZbs{}0}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// sortie}
 
 \PYG{+w}{    }\PYG{p}{\PYGZcb{};}
-\PYG{+w}{    }\PYG{n}{sprintf}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}ppms/foule\PYGZhy{}\PYGZpc{}03d.ppm\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{n}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{mkdir}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}./ppms\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mo}{0777}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{sprintf}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}ppms/step\PYGZhy{}\PYGZpc{}03d.ppm\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{n}\PYG{p}{);}
 \PYG{+w}{    }\PYG{n}{file}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{fopen}\PYG{p}{(}\PYG{n}{filename}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}w\PYGZdq{}}\PYG{p}{);}
 \PYG{+w}{    }\PYG{n}{fprintf}\PYG{p}{(}\PYG{n}{file}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}P3}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZpc{}d \PYGZpc{}d}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{255}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{width}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{height}\PYG{p}{);}
 \PYG{+w}{    }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{height}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{j}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
