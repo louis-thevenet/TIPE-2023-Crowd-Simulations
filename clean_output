@@ -1,5 +1,5 @@
 #!/bin/bash
 
-rm ./ppms/foule-*.ppm
+rm ./ppms/step-*.ppm
 rm ./output.mp4
 rm ./output.gif
