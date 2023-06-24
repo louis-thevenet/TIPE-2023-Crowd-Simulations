@@ -2,8 +2,8 @@
 Project files of my TIPE (Personal Initiative Project) made as I was studying in CPGE (Two-year classes to prepare for the competitive exams to the french "Grandes Ecoles") from 2021 to 2023. \
 The project is assessed during the exams and received the grade of [insert future grade]. \
 See (french) :
-- https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/blob/main/presentation_TIPE/Mcot_louis.pdf
-- https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/blob/main/presentation_TIPE/fichier_principal.pdf
+- [MCOT](https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/blob/main/presentation_TIPE/Mcot_louis.pdf)
+- [Presentation](https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/blob/main/presentation_TIPE/fichier_principal.pdf)
 ## Usage
 - `runmp4 maps/your_map N`
 - `rungif maps/your_map N`
