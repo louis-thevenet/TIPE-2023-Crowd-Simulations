@@ -198,8 +198,8 @@ void save_image(int n, int **img, int width, int height) {
     char colors[4][13] = {
             "255 255 255 \0", //air
             "000 000 000 \0", // mur
-            "255 000 000 \0", //entrée
             "000 255 000 \0", // sortie
+            "255 000 000 \0", //entrée
 
     };
     mkdir("./ppms", 0777);

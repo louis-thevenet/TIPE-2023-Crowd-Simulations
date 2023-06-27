@@ -7,6 +7,5 @@ N=$2
 ./crowdsim "$filename" $N
 echo "converting to gif"
 convert -delay 30 -loop 0 ./ppms/step-*.ppm  output.gif
-vlc ./output.gif
 
 

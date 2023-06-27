@@ -7,6 +7,5 @@ N=$2
 ./crowdsim "$filename" $N
 echo "converting to mp4"
 convert -delay 30 -loop 0 ./ppms/step-*.ppm  output.mp4
-vlc ./output.mp4
 
 
