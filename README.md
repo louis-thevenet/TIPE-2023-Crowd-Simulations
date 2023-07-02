@@ -14,7 +14,7 @@ See (french) :
 where `N` is the number of initial agents.
 
 ## Example
-`./runmp4 maps/simple_porte_test_obstacle.txt 100` \
+`./runmp4 maps/simple_porte_test_obstacle.txt 100`
 
 Each digit represents the number of agents on the square, a red segment points toward their desired exit.
 
