@@ -6,6 +6,6 @@ N=$2
 ./clean_output
 ./crowdsim "$filename" $N
 echo "converting to gif"
-convert -delay 30 -loop 0 ./ppms/step-*.ppm  output.gif
+ffmpeg -r 3 -f image2  -i ./ppms/step-%03d.ppm -crf 25  -pix_fmt yuv420p output.gif
 
 

@@ -6,6 +6,6 @@ N=$2
 ./clean_output
 ./crowdsim "$filename" $N
 echo "converting to mp4"
-convert -delay 30 -loop 0 ./ppms/step-*.ppm  output.mp4
+ffmpeg -r 3 -f image2  -i ./ppms/step-%03d.ppm -vcodec libx264 -crf 25  -pix_fmt yuv420p output.mp4
 
 
