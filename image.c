@@ -3,8 +3,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <pthread.h>
 
 #define SCALE 80
+
+typedef struct thread_arg
+{
+    map *m;
+    int **img;
+    double *factors;
+    int y;
+    person **p;
+    int pop;
+} thread_arg;
 
 const int digits[10][5][5] = {
     // chiffre 0
@@ -136,6 +147,33 @@ void draw_arrows(int **img, person **p, int pop)
     }
 }
 
+void *fill_line(void *args)
+{
+    thread_arg *arg = (thread_arg *)args;
+
+    for (int x = 0; x < arg->m->width; x++)
+    {
+        if (arg->m->level[arg->y][x] < Person)
+        {
+            for (int i = ceil((1 - arg->factors[arg->m->level[arg->y][x]]) * SCALE);
+                 i < ceil(SCALE * arg->factors[arg->m->level[arg->y][x]]); i++)
+            {
+                for (int j = ceil((1 - arg->factors[arg->m->level[arg->y][x]]) * SCALE);
+                     j < ceil(SCALE * arg->factors[arg->m->level[arg->y][x]]); j++)
+                {
+                    arg->img[SCALE * arg->y + i][SCALE * x + j] = arg->m->level[arg->y][x];
+                }
+            }
+        }
+
+        else
+        {
+            draw_digit(arg->img, arg->m->level[arg->y][x] - 3, SCALE * arg->y, SCALE * x, SCALE);
+            draw_arrows(arg->img, arg->p, arg->pop);
+        }
+    }
+}
+
 int **create_image(map *m, person **p, int pop)
 {
 
@@ -154,39 +192,29 @@ int **create_image(map *m, person **p, int pop)
     // { Air,   Wall,  Start,  Exit , Person};
     double factors[] = {.95, .95, 0.97, 0.97, .6};
 
+    pthread_t *threads = malloc(sizeof(pthread_t) * height);
+    thread_arg *args;
     for (int y = 0; y < m->height; y++)
-    { // agrandir l'image à SCALE*taille
-        for (int x = 0; x < m->width; x++)
+    {
+        args = malloc(sizeof(thread_arg));
+        args->m = m;
+        args->factors = factors;
+        args->img = img;
+        args->pop = pop;
+        args->p = p;
+        args->y = y;
+        pthread_create(&threads[y], NULL, fill_line, args);
+    }
+    for (int i = 0; i < height; i++)
+    { // grille
+        for (int j = 0; j < width; j++)
         {
-            if (m->level[y][x] < Person)
-            {
-                for (int i = ceil((1 - factors[m->level[y][x]]) * SCALE);
-                     i < ceil(SCALE * factors[m->level[y][x]]); i++)
-                {
-                    for (int j = ceil((1 - factors[m->level[y][x]]) * SCALE);
-                         j < ceil(SCALE * factors[m->level[y][x]]); j++)
-                    {
-                        img[SCALE * y + i][SCALE * x + j] = m->level[y][x];
-                    }
-                }
-            }
-
-            else
-            {
-                draw_digit(img, m->level[y][x] - 3, SCALE * y, SCALE * x, SCALE);
-                draw_arrows(img, p, pop);
-            }
-        }
-        for (int i = 0; i < height; i++)
-        { // grille
-            for (int j = 0; j < width; j++)
-            {
-                if (i % SCALE == 0 || j % SCALE == 0)
-                    img[i][j] = 1;
-            }
+            if (i % SCALE == 0 || j % SCALE == 0)
+                img[i][j] = 1;
         }
     }
-
+    for (int y = 0; y < m->height; y++)
+        pthread_join(threads[y], NULL);
     return img;
 }
 
