@@ -131,9 +131,9 @@ void draw_arrows(int **img, person **p, int pop) {
 
         for (int x = deb; x<fin; x++) {
             if (alpha * x + beta > -SCALE/2 && alpha * x + beta < SCALE/2) {
-                img[(int)(-1 + y0+ alpha * x + beta)][x+x0] = 2;
-                img[(int)(y0+ alpha * x + beta)][x+x0] = 2;
-                img[(int)(1 + y0+ alpha * x + beta)][x+x0] = 2;
+                img[(int)(-1 + y0+ alpha * x + beta)][x+x0] = 3;
+                img[(int)(y0+ alpha * x + beta)][x+x0] = 3;
+                img[(int)(1 + y0+ alpha * x + beta)][x+x0] = 3;
             }
         }
     }
