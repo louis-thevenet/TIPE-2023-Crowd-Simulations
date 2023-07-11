@@ -1,6 +1,7 @@
 #include "image.h"
+void simulation(char *map_name, int initial_pop)
+{
 
-void simulation(char *map_name, int initial_pop) {
   map *m = load_map(map_name);
   person **p = generate_population(m, initial_pop);
   int *pred = malloc(sizeof(int) * initial_pop);
@@ -9,21 +10,24 @@ void simulation(char *map_name, int initial_pop) {
   int j = 0;
   double aver_dens = 0;
 
-  while (cnt != 0) {
+  while (cnt != 0)
+  {
     cnt = pop;
 
-    for (int i = 0; i < pop; i++) {
+    for (int i = 0; i < pop; i++)
+    {
       pred[i] = a_star(m, p[i]->pos, p[i]->goal);
       move_stress(m, p, pop, pred, i);
 
-      if (p[i]->pos.y == p[i]->goal.y && p[i]->pos.x == p[i]->goal.x) {
+      if (p[i]->pos.y == p[i]->goal.y && p[i]->pos.x == p[i]->goal.x)
+      {
         cnt--;
       }
     }
     save_image(j, create_image(m, p, pop), m->width, m->height);
 
     printf("#%d, %dp, %fp/m^2\n", j, cnt, (float)cnt / (float)m->surface);
-      aver_dens += (float)cnt / (float)m->surface;
+    aver_dens += (float)cnt / (float)m->surface;
     j++;
     if (j > 300)
       return;
@@ -35,11 +39,13 @@ void simulation(char *map_name, int initial_pop) {
   free_map(m);
 }
 
-int main(int argc, char **argv) {
-  if (argc <= 2 || atoi(argv[2])==0) {
+int main(int argc, char **argv)
+{
+  if (argc <= 2 || atoi(argv[2]) == 0)
+  {
     printf("Missing parameters");
     return 1;
   }
-    simulation(argv[1], atoi(argv[2]));
+  simulation(argv[1], atoi(argv[2]));
   return 0;
 }

@@ -5,7 +5,7 @@
 #include <sys/stat.h>
 #include <pthread.h>
 
-#define SCALE 80
+#define SCALE 150
 
 typedef struct thread_arg
 {
@@ -240,8 +240,8 @@ void save_image(int n, int **img, int width, int height)
         "255 000 000 \0", // entrée
 
     };
-    mkdir("./ppms", 0777);
-    sprintf(filename, "ppms/step-%03d.ppm", n);
+    // mkdir("./ppms", 0777);
+    sprintf(filename, "./ppms/step-%03d.ppm", n);
     file = fopen(filename, "w");
     fprintf(file, "P3\n%d %d\n255\n", width, height);
     for (int j = 0; j < height; j++)
