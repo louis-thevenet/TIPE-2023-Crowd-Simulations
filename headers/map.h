@@ -1,17 +1,22 @@
 #include <stdbool.h>
 
-typedef struct location {
+typedef struct location
+{
     int y;
     int x;
 } location;
 
-
-enum objects {
-    Air, Wall, Start, Exit, Person
+enum objects
+{
+    Air,
+    Wall,
+    Start,
+    Exit,
+    Person
 };
 
-
-typedef struct map {
+typedef struct map
+{
     char *name;
     int **level;
 
