@@ -5,12 +5,10 @@
 #include <sys/stat.h>
 #include <pthread.h>
 
-#define SCALE 150
-
 typedef struct thread_arg
 {
     map *m;
-    int **img;
+    image *img;
     double *factors;
     int y;
     person **p;
@@ -89,7 +87,7 @@ const int digits[10][5][5] = {
         {0, 0, 0, 0, 1},
         {0, 1, 1, 1, 1}}};
 
-void draw_digit(int **tab, int digit, int y0, int x0, int a)
+void draw_digit(image *img, int digit, int y0, int x0, int a)
 {
 
     int digi_size = 5;
@@ -114,34 +112,34 @@ void draw_digit(int **tab, int digit, int y0, int x0, int a)
                 for (int j = offset_x * (a / digi_size); j < (offset_x + 1) * (a / digi_size); j++)
                 {
 
-                    tab[y0 + i][x0 + j] = digits[digit][offset_y][offset_x];
+                    img->pixels[y0 + i][x0 + j] = digits[digit][offset_y][offset_x];
                 }
             }
         }
     }
 }
 
-void draw_arrows(int **img, person **p, int pop)
+void draw_arrows(image *img, person **p, int pop)
 {
     for (int i = 0; i < pop; i++)
     {
         double alpha = ((double)(p[i]->goal.y - p[i]->pos.y)) / ((double)(p[i]->goal.x - p[i]->pos.x));
         double beta = 0;
 
-        int y0 = SCALE * p[i]->pos.y + SCALE / 2;
-        int x0 = SCALE * p[i]->pos.x + SCALE / 2;
+        int y0 = img->scale * p[i]->pos.y + img->scale / 2;
+        int x0 = img->scale * p[i]->pos.x + img->scale / 2;
 
-        int deb = (p[i]->goal.y - p[i]->pos.y > 0 && alpha < 0) || ((p[i]->goal.y - p[i]->pos.y) < 0 && alpha > 0) ? -SCALE / 2 + 1 : 0;
+        int deb = (p[i]->goal.y - p[i]->pos.y > 0 && alpha < 0) || ((p[i]->goal.y - p[i]->pos.y) < 0 && alpha > 0) ? -img->scale / 2 + 1 : 0;
 
-        int fin = (p[i]->goal.y - p[i]->pos.y > 0 && alpha < 0) || ((p[i]->goal.y - p[i]->pos.y) < 0 && alpha > 0) ? 0 : SCALE / 2;
+        int fin = (p[i]->goal.y - p[i]->pos.y > 0 && alpha < 0) || ((p[i]->goal.y - p[i]->pos.y) < 0 && alpha > 0) ? 0 : img->scale / 2;
 
         for (int x = deb; x < fin; x++)
         {
-            if (alpha * x + beta > -SCALE / 2 && alpha * x + beta < SCALE / 2)
+            if (alpha * x + beta > -img->scale / 2 && alpha * x + beta < img->scale / 2)
             {
-                img[(int)(-1 + y0 + alpha * x + beta)][x + x0] = 3;
-                img[(int)(y0 + alpha * x + beta)][x + x0] = 3;
-                img[(int)(1 + y0 + alpha * x + beta)][x + x0] = 3;
+                img->pixels[(int)(-1 + y0 + alpha * x + beta)][x + x0] = 3;
+                img->pixels[(int)(y0 + alpha * x + beta)][x + x0] = 3;
+                img->pixels[(int)(1 + y0 + alpha * x + beta)][x + x0] = 3;
             }
         }
     }
@@ -155,38 +153,41 @@ void *fill_line(void *args)
     {
         if (arg->m->level[arg->y][x] < Person)
         {
-            for (int i = ceil((1 - arg->factors[arg->m->level[arg->y][x]]) * SCALE);
-                 i < ceil(SCALE * arg->factors[arg->m->level[arg->y][x]]); i++)
+            for (int i = ceil((1 - arg->factors[arg->m->level[arg->y][x]]) * arg->img->scale);
+                 i < ceil(arg->img->scale * arg->factors[arg->m->level[arg->y][x]]); i++)
             {
-                for (int j = ceil((1 - arg->factors[arg->m->level[arg->y][x]]) * SCALE);
-                     j < ceil(SCALE * arg->factors[arg->m->level[arg->y][x]]); j++)
+                for (int j = ceil((1 - arg->factors[arg->m->level[arg->y][x]]) * arg->img->scale);
+                     j < ceil(arg->img->scale * arg->factors[arg->m->level[arg->y][x]]); j++)
                 {
-                    arg->img[SCALE * arg->y + i][SCALE * x + j] = arg->m->level[arg->y][x];
+                    arg->img->pixels[arg->img->scale * arg->y + i][arg->img->scale * x + j] = arg->m->level[arg->y][x];
                 }
             }
         }
 
         else
         {
-            draw_digit(arg->img, arg->m->level[arg->y][x] - 3, SCALE * arg->y, SCALE * x, SCALE);
+            draw_digit(arg->img, arg->m->level[arg->y][x] - 3, arg->img->scale * arg->y, arg->img->scale * x, arg->img->scale);
             draw_arrows(arg->img, arg->p, arg->pop);
         }
     }
 }
 
-int **create_image(map *m, person **p, int pop)
+image *create_image(map *m, person **p, int pop, int scale)
 {
 
-    int height = m->height * SCALE;
-    int width = m->width * SCALE;
+    int height = m->height * scale;
+    int width = m->width * scale;
 
-    int **img = malloc(sizeof(int *) * height);
+    image *img = malloc(sizeof(image));
+    img->scale = scale;
+    img->pixels = malloc(sizeof(int *) * height);
+
     for (int i = 0; i < height; i++)
     {
-        img[i] = malloc(sizeof(int) * width);
+        img->pixels[i] = malloc(sizeof(int) * width);
         for (int j = 0; j < width; j++)
         {
-            img[i][j] = 0;
+            img->pixels[i][j] = 0;
         }
     }
     // { Air,   Wall,  Start,  Exit , Person};
@@ -209,8 +210,8 @@ int **create_image(map *m, person **p, int pop)
     { // grille
         for (int j = 0; j < width; j++)
         {
-            if (i % SCALE == 0 || j % SCALE == 0)
-                img[i][j] = 1;
+            if (i % scale == 0 || j % scale == 0)
+                img->pixels[i][j] = 1;
         }
     }
     for (int y = 0; y < m->height; y++)
@@ -218,19 +219,20 @@ int **create_image(map *m, person **p, int pop)
     return img;
 }
 
-void free_image(int **img, int height)
+void free_image(image *img, int height)
 {
     for (int i = 0; i < height; i++)
     {
-        free(img[i]);
+        free(img->pixels[i]);
     }
+    free(img->pixels);
     free(img);
 }
 
-void save_image(int n, int **img, int width, int height)
+void save_image(int n, image *img, int width, int height)
 {
-    width *= SCALE;
-    height *= SCALE;
+    width *= img->scale;
+    height *= img->scale;
     char filename[20];
     FILE *file;
     char colors[4][13] = {
@@ -248,7 +250,7 @@ void save_image(int n, int **img, int width, int height)
     {
         for (int i = 0; i < width; i++)
         {
-            fprintf(file, colors[img[j][i]]);
+            fprintf(file, colors[img->pixels[j][i]]);
         }
     }
     fclose(file);

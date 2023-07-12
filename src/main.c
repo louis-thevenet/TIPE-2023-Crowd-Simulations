@@ -1,5 +1,5 @@
 #include "image.h"
-void simulation(char *map_name, int initial_pop)
+void simulation(char *map_name, int initial_pop, int scale)
 {
 
   map *m = load_map(map_name);
@@ -24,7 +24,7 @@ void simulation(char *map_name, int initial_pop)
         cnt--;
       }
     }
-    save_image(j, create_image(m, p, pop), m->width, m->height);
+    save_image(j, create_image(m, p, pop, scale), m->width, m->height);
 
     printf("#%d, %dp, %fp/m^2\n", j, cnt, (float)cnt / (float)m->surface);
     aver_dens += (float)cnt / (float)m->surface;
@@ -41,11 +41,11 @@ void simulation(char *map_name, int initial_pop)
 
 int main(int argc, char **argv)
 {
-  if (argc <= 2 || atoi(argv[2]) == 0)
+  if (argc <= 3 || atoi(argv[2]) == 0)
   {
     printf("Missing parameters");
     return 1;
   }
-  simulation(argv[1], atoi(argv[2]));
+  simulation(argv[1], atoi(argv[2]), atoi(argv[3]));
   return 0;
 }

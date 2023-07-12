@@ -2,9 +2,10 @@
 
 filename=$1
 N=$2
+S=$3
 
 ./scripts/clean_output
-./crowdsim "$filename" $N
+./crowdsim "$filename" $N $S
 echo "converting to gif"
 ffmpeg -r 3 -f image2  -i ./ppms/step-%03d.ppm -crf 25  -pix_fmt yuv420p ./outputs/output.gif
 

@@ -1,8 +1,13 @@
 #include "move.h"
 
-void draw_digit(int **tab, int digit, int y0, int x0, int a);
-void draw_arrows(int **img, person **p, int pop);
-int **create_image(map *m, person **p, int pop);
-void free_image(int **img, int height);
-void save_image(int n, int **img, int width, int height);
+typedef struct struct_image
+{
+    int **pixels;
+    int scale;
+} image;
 
+void draw_digit(image *img, int digit, int y0, int x0, int a);
+void draw_arrows(image *img, person **p, int pop);
+image *create_image(map *m, person **p, int pop, int scale);
+void free_image(image *img, int height);
+void save_image(int n, image *img, int width, int height);
