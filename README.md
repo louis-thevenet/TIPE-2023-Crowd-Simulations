@@ -23,7 +23,7 @@ https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/assets/55986107/b6d901
 ![image](https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/assets/55986107/57ea9ae2-8176-4500-8d9f-eb67ee4b8141)
 
 ## Settings
-Generating large ppm files for each step takes a long time, you can change the scale of the output video relative to the map size by editing the `SCALE` macro in `image.c`, useful to speed up simulation on large maps or to get fancier results. Beware of ImageMagick's RAM usage.
+Generating large ppm files for each step takes a long time, you can change the scale of the output video relative to the map size by editing the `SCALE` macro in `image.c`, useful to speed up simulation on large maps or to get fancier results.
 ### SCALE = 10
 ![output](https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/assets/55986107/1ae94229-d3ef-480e-af65-3516627cdafe)
 
