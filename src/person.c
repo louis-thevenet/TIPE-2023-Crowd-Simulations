@@ -1,23 +1,29 @@
 #include "person.h"
 
-person **generate_population(map *m, int n) {
+#define RANDOM_SPAWN 0
+
+person **generate_population(map *m, int n)
+{
 
     person **res = malloc(sizeof(person) * n);
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         res[i] = malloc(sizeof(person));
 
-        if (rand()%10<4) {
-            res[i]->pos.x=-1;
-            res[i]->pos.y=-1;
-            while (res[i]->pos.x == -1 ||res[i]->pos.y==-1
-                    || m->level[res[i]->pos.y][res[i]->pos.x] != Air){
+        if (RANDOM_SPAWN && rand() % 10 < 4)
+        {
+            res[i]->pos.x = -1;
+            res[i]->pos.y = -1;
+            while (res[i]->pos.x == -1 || res[i]->pos.y == -1 || m->level[res[i]->pos.y][res[i]->pos.x] != Air)
+            {
 
-                res[i]->pos.x=rand()%m->width;
-                res[i]->pos.y=rand()%m->height;
+                res[i]->pos.x = rand() % m->width;
+                res[i]->pos.y = rand() % m->height;
             }
         }
-        else {
+        else
+        {
             res[i]->pos = m->starts[rand() % (m->start_nb)];
         }
 
@@ -26,8 +32,10 @@ person **generate_population(map *m, int n) {
     return res;
 }
 
-void free_population(person **p, int n) {
-    for (int i = 0; i < n; i++) {
+void free_population(person **p, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
         free(p[i]);
     }
     free(p);

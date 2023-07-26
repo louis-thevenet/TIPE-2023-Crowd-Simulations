@@ -1,0 +1,8 @@
+original 
+./scripts/runmp4 maps/metro_quai.txt 1000 80
+Size:3104540K  Cpu:140%  Elapsed:52.67
+
+
+no image
+./scripts/runmp4 maps/metro_quai.txt 1000 80
+Size:48420K  Cpu:101%  Elapsed:2.82
