@@ -1,5 +1,5 @@
 #!/bin/bash
 
-rm ../ppms/step-*.ppm
-rm ../output.mp4
-rm ../output.gif
+rm ./ppms/step-*.ppm
+rm ./outputs/output.mp4
+rm ./outputs/output.gif
