@@ -1,6 +1,6 @@
 # TIPE-2023-Crowd-Simulations
 Project files of my TIPE (Personal Initiative Project) made as I was studying in CPGE (Two-year classes to prepare for the competitive exams to the french "Grandes Ecoles") from 2021 to 2023. \
-The project is assessed during the exams and received the grade of [insert future grade]. \
+The project is assessed during the exams and received the grade of 13,8/20. \
 See (french) :
 - [MCOT](https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/blob/main/presentation_TIPE/Mcot_louis.pdf)
 - [Presentation](https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/blob/main/presentation_TIPE/fichier_principal.pdf)
