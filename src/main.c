@@ -1,4 +1,5 @@
 #include "image.h"
+
 void simulation(char *map_name, int initial_pop, int scale)
 {
 
@@ -26,11 +27,15 @@ void simulation(char *map_name, int initial_pop, int scale)
     }
     save_image(j, create_image(m, p, pop, scale), m->width, m->height);
 
-    printf("#%d, %dp, %fp/m^2\n", j, cnt, (float)cnt / (float)m->surface);
+    printf("\r#%d, %dp, %fp/m^2", j, cnt, (float)cnt / (float)m->surface);
+    fflush(stdout);
     aver_dens += (float)cnt / (float)m->surface;
     j++;
     if (j > 300)
+    {
+      printf("Simulation exceeded 300 steps\n");
       return;
+    }
   }
 
   printf("average density : %f\n", aver_dens / (double)j);
