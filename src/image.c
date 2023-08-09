@@ -250,7 +250,7 @@ void save_image(int n, image *img, int width, int height)
     {
         for (int i = 0; i < width; i++)
         {
-            fprintf(file, colors[img->pixels[j][i]]);
+            fprintf(file, "%s", colors[img->pixels[j][i]]);
         }
     }
     fclose(file);
