@@ -3,8 +3,8 @@
 #include <time.h>
 
 typedef struct person {
-    location pos;
-    location goal;
+  location pos;
+  location goal;
 } person;
 
 person **generate_population(map *m, int n);

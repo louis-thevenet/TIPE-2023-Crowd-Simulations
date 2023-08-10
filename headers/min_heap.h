@@ -1,9 +1,9 @@
 struct Heap {
-    int *arr;
-    int *pos;
-    int count;
-    int capacity;
-    int heap_type; // for min heap , 1 for max heap
+  int *arr;
+  int *pos;
+  int count;
+  int capacity;
+  int heap_type; // for min heap , 1 for max heap
 };
 typedef struct Heap Heap;
 
