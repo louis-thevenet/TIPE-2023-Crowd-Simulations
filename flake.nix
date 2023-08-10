@@ -20,18 +20,11 @@
           }
           rec {
             packages = with p; [
-
-              # debugger
-              #llvm.lldb
               gdb
               gcc
-              # fix headers not found
               clang-tools
-
-              # LSP and compiler
-              #llvm.libstdcxxClang
-
               valgrind
+              ffmpeg
             ];
             name = "C";
           };
