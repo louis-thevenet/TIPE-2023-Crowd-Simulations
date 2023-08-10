@@ -1,5 +1,3 @@
-#!/bin/bash
-
 rm ./ppms/step-*.ppm
 rm ./outputs/output.mp4
 rm ./outputs/output.gif
