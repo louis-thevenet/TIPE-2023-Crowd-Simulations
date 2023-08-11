@@ -1,33 +1,23 @@
 {
-  description = "C/C++ environment";
+  description = "A Nix flake C dev environment";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    utils.url = "github:numtide/flake-utils";
-  };
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-  outputs = { self, nixpkgs, utils, ... }@inputs:
-    utils.lib.eachDefaultSystem (
-      system:
-      let
-        p = import nixpkgs { inherit system; };
-      in
-      {
-
-        devShell = p.mkShell.override
-          {
-            stdenv = p.clangStdenv;
-          }
-          rec {
-            packages = with p; [
-              gdb
-              gcc
-              clang-tools
-              valgrind
-              ffmpeg
-            ];
-            name = "C";
-          };
-      }
-    );
+  outputs = { self, nixpkgs }:
+    let
+      overlays = [
+        (final: prev: rec { })
+      ];
+      supportedSystems = [ "x86_64-linux" ];
+      forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
+        pkgs = import nixpkgs { inherit overlays system; };
+      });
+    in
+    {
+      devShells = forEachSupportedSystem ({ pkgs }: {
+        default = pkgs.mkShell {
+          packages = with pkgs; [ gcc clang-tools ffmpeg valgrind gdb ];
+        };
+      });
+    };
 }
