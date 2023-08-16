@@ -16,7 +16,7 @@
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ gcc clang-tools ffmpeg valgrind gdb ];
+          packages = with pkgs; [ gcc ffmpeg ];
         };
       });
     };
