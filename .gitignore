@@ -8,13 +8,26 @@ Assets/Plugins/Editor/JetBrains*
 # Visual Studio Code
 .vscode/
 
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
 
-cmake-build-debug/
-cmake-build-trace/
+.cmake/
 
 crowdsim
 *.ppm
 *.mp4
 *.gif
 ppms/
+
+
+
 .direnv/
