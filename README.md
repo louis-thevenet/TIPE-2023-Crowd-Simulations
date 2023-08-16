@@ -6,15 +6,17 @@ See (french) :
 - [Presentation](https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/blob/main/presentation_TIPE/fichier_principal.pdf)
 ## Usage
 ### Compile
-`gcc -o crowdsim -lm -i headers/ ./src/*.c`
-### Run
-- `runmp4 maps/your_map N`
-- `rungif maps/your_map N`
+`cmake .` \
+`make`
 
-where `N` is the number of initial agents.
+### Run
+- `scripts/runmp4 maps/your_map N scale`
+- `scripts/rungif maps/your_map N scale`
+
+where `N` is the number of initial agents and `scale` is the scale of the output video relative to the map size.
 
 ## Example
-`./runmp4 maps/simple_porte_test_obstacle.txt 100`
+`./runmp4 maps/simple_porte_test_obstacle.txt 100 40`
 
 Each digit represents the number of agents on the square, a red segment points toward their desired exit.
 
@@ -22,8 +24,6 @@ https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/assets/55986107/b6d901
 
 ![image](https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/assets/55986107/57ea9ae2-8176-4500-8d9f-eb67ee4b8141)
 
-## Settings
-Generating large ppm files for each step takes a long time, you can change the scale of the output video relative to the map size by editing the `SCALE` macro in `image.c`, useful to speed up simulation on large maps or to get fancier results.
 ### SCALE = 10
 ![output](https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/assets/55986107/1ae94229-d3ef-480e-af65-3516627cdafe)
 
