@@ -1,8 +1,8 @@
 #include "move.h"
 
 typedef struct struct_image {
-  int **pixels;
-  int scale;
+    int **pixels;
+    int scale;
 } image;
 
 void draw_digit(image *img, int digit, int y0, int x0, int a);
