@@ -6,7 +6,7 @@ See (french) :
 - [Presentation](https://github.com/A-delta/TIPE-2023-Simulation-de-Foules/blob/main/presentation_TIPE/fichier_principal.pdf)
 ## Usage
 ### Compile
-`gcc -o crowdsim -lm ./*.c`
+`gcc -o crowdsim -lm -i headers/ ./src/*.c`
 ### Run
 - `runmp4 maps/your_map N`
 - `rungif maps/your_map N`
