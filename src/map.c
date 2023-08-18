@@ -9,11 +9,13 @@ map *load_map(char *filename) {
     FILE *f = fopen(filename, "r");
     struct map *m = (struct map *)malloc(1 * sizeof(struct map));
     m->name = (char *)malloc(40 * sizeof(char));
-    fscanf(f, "%s\n", m->name);
-    fscanf(f, "%d", &(m->width));
-    fscanf(f, "%d\n", &(m->height));
-    fscanf(f, "%d", &(m->start_nb));
-    fscanf(f, "%d\n", &(m->exit_nb));
+    int count = fscanf(f, "%s\n%d %d\n%d %d", m->name, &m->width, &m->height,
+                       &m->start_nb, &m->exit_nb);
+
+    if (count != 5) {
+        printf("An error occured while reading %s", filename);
+        exit(1);
+    }
 
     m->starts = malloc(sizeof(location) * m->start_nb);
     int start_cnt = 0;
@@ -37,7 +39,7 @@ map *load_map(char *filename) {
                 if (start_cnt >= m->start_nb) {
                     printf("Found too many starts, %d were specified",
                            m->start_nb);
-                    exit(0);
+                    exit(1);
                 }
                 m->starts[start_cnt] = (location){i, j};
                 start_cnt++;
@@ -47,7 +49,7 @@ map *load_map(char *filename) {
                 if (exit_cnt >= m->exit_nb) {
                     printf("Found too many exits, %d were specified",
                            m->exit_nb);
-                    exit(0);
+                    exit(1);
                 }
                 m->exits[exit_cnt] = (location){i, j};
                 exit_cnt++;
