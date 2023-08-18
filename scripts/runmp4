@@ -2,9 +2,11 @@ filename=$1
 N=$2
 S=$3
 
-./scripts/clean_output
+./scripts/clean_output 2> /dev/null
 ./crowdsim "$filename" $N $S
-echo "converting to mp4"
-ffmpeg -r 3 -f image2  -i ./ppms/step-%03d.ppm -vcodec libx264 -crf 25  -pix_fmt yuv420p ./outputs/output.mp4
 
-
+if [ $? -eq 0 ]; then
+    ffmpeg -r 3 -f image2  -i ./ppms/step-%03d.ppm -vcodec libx264 -crf 25  -pix_fmt yuv420p ./outputs/output.mp4
+else 
+    exit
+fi
