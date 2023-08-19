@@ -1,6 +1,5 @@
 % thanks to Jean-Julien Fleck who created this template : https://www.overleaf.com/latex/templates/presentation-beamer-pour-tipe-2019/jnrdxpgkwpbc
 
-
 \documentclass{beamer}
 \usepackage{currfile}
 \usepackage{textcomp}
@@ -18,31 +17,34 @@
 \usepackage{hyperref}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{minted}
+\usepackage{tikz}     % Un package pour les dessins (utilisé pour l'environnement {code})
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[T1]{fontenc}    % Encodage des accents
+\usepackage[utf8]{inputenc} % Lui aussi
+\usepackage[frenchb]{babel} % Pour la traduction française
+\usepackage{numprint}       % Histoire que les chiffres soient bien
 
+\usepackage{amsmath}        % La base pour les maths
+\usepackage{mathrsfs}       % Quelques symboles supplémentaires
+\usepackage{amssymb}        % encore des symboles.
+\usepackage{amsfonts}       % Des fontes, eg pour \mathbb.
+
+\usemintedstyle{friendly}
 \pgfplotsset{compat=newest}
 \pgfplotsset{every axis y label/.style={at={(yticklabel cs:1)},anchor=north east, rotate=90}}
 
 \newcommand{\imagesource}[1]{{\footnotesize Source : #1}}
 
 \input{preambule/special_beamer.tex}
-
-% Les autres packages utiles  notamment pour le français, les accents ou Python
-\input{preambule/autres_packages.tex}
-% Les macros et raccourcis personnels
 \input{preambule/macros.tex}
 
-% On définit le titre et l'auteur du document
-
-% L'argument optionnel (entre crochets) donne le titre qui sera mis sur chaque slide
 \title[Mouvements de Foules]{TIPE : Modélisation d’une foule d’usagers du métro parisien}
-\author{Louis \textsc{Thevenet}} % Votre nom
-% L'épreuve (car on n'a pas le droit de signaler sa provenance à un concours) (là encore, l'argument optionnel apparaît sur chaque slide)
+\author{Louis \textsc{Thevenet}}
 \institute[TIPE]{Épreuve de TIPE}
 \date{Session 2023} 
 
-% On démarre le document proprement dit
 \begin{document}
-
 \input{slides/00_titre_et_tdm.tex}
 \input{slides/01_presentation_historique}
 \input{slides/02_problematique}
@@ -50,7 +52,4 @@
 \input{slides/04_implementation}
 \input{slides/05_applications}
 \input{slides/06_annexe}
-
 \end{document}
-
-

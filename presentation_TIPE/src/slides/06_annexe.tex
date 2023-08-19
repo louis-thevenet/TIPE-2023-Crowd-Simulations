@@ -1,80 +1,15 @@
-%! Author = louis
-%! Date = 05/06/23
-
-% Le titre de la partie
 \section{Annexe}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Première diapo
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{frame}
-\title{Annexe : programme}
+    \title{Annexe : programme}
     \maketitle
 \end{frame}
 
 
-\begin{frame}[
-    t, % align text from top
-    allowframebreaks, % allow brake frames
-    fragile % allow verb content
-]{map.c}
-    \frametitle{map.c}
-    \scriptsize
-    \inputminted[breaklines,breakanywhere]{c}{../../src/map.c}
-\end{frame}
-
-\begin{frame}[
-    t, % align text from top
-    allowframebreaks, % allow brake frames
-    fragile % allow verb content
-]{person.c}
-    \frametitle{person.c}
-    \scriptsize
-    \inputminted[breaklines,breakanywhere]{c}{../../src/person.c}
-\end{frame}
-
-
-\begin{frame}[
-    t, % align text from top
-    allowframebreaks, % allow brake frames
-    fragile % allow verb content
-]{min\_heap.c}
-    \frametitle{min\_heap.c}
-    \scriptsize
-    \inputminted[breaklines,breakanywhere]{c}{../../src/min_heap.c}
-\end{frame}
-
-\begin{frame}[
-    t, % align text from top
-    allowframebreaks, % allow brake frames
-    fragile % allow verb content
-]{move.c}
-    \frametitle{move.c}
-    \scriptsize
-    \inputminted[breaklines,breakanywhere]{c}{../../src/move.c}
-\end{frame}
-
-
-\begin{frame}[
-    t, % align text from top
-    allowframebreaks, % allow brake frames
-    fragile % allow verb content
-]{image.c}
-    \frametitle{image.c}
-    \scriptsize
-    \inputminted[breaklines,breakanywhere]{c}{../../src/image.c}
-\end{frame}
-
-
-
-
-\begin{frame}[
-    t, % align text from top
-    allowframebreaks, % allow brake frames
-    fragile % allow verb content
-]{main.c}
-    \frametitle{main.c}
-    \scriptsize
-    \inputminted[breaklines,breakanywhere]{c}{../../src/main.c}
-\end{frame}
+\foreach \nn in{map.c,person.c,\detokenize{min_heap.c},move.c,image.c,main.c}{
+    \begin{frame}[t, allowframebreaks]{\nn}
+        \frametitle{\nn}
+        \scriptsize
+        \inputminted[breaklines,breakanywhere]{c}{../../src/\nn}
+    \end{frame}
+}
