@@ -3,6 +3,8 @@ N=$2
 S=$3
 
 ./scripts/clean_output 2> /dev/null
+mkdir outputs ppms 2> /dev/null
+
 ./crowdsim "$filename" $N $S
 
 if [ $? -eq 0 ]; then
