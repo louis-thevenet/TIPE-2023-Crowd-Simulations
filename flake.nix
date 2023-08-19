@@ -13,10 +13,42 @@
         pkgs = import nixpkgs { inherit overlays system; };
       });
     in
+
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ gcc ffmpeg ];
+          packages = with pkgs; [
+            gcc
+            ffmpeg
+            (python310.withPackages (ps: with ps; [ pygments ])) # needed for minted building tex files
+
+            (pkgs.texlive.combine {
+              inherit (pkgs.texlive)
+                scheme-medium
+
+                beamer
+                minted
+                currfile
+                bbold
+                pgfplots
+                adjustbox
+                filehook
+                stmaryrd
+                mathtools
+                algorithms
+                algorithmicx
+                siunitx
+                caption
+                booktabs
+                numprint
+                cancel
+                wrapfig
+                mdframed
+                zref
+                needspace
+                ;
+            })
+          ];
         };
       });
     };
